@@ -1,0 +1,55 @@
+
+
+ 
+  <h1 class="text-center mt-4"><%= @user.username %> </h1>
+
+<%= gravatar_for @user, size: 200 %>
+
+<div class="text-center mt-4 btn-lg">
+<%= render 'shared/stats' %>
+<% unless @user == current_user %>
+<%= render 'follow_form' if logged_in? %>
+<% end %>
+</div>
+
+
+<% if  @user == current_user %>
+<div class="text-center mt-4 btn-lg">
+
+  <%= link_to "Добавить фото", "https://ru.gravatar.com/", class: "btn btn-outline-success" %>
+    <%= link_to "Изменить профиль", edit_user_path(@user), class: "btn btn-outline-info" %>
+    <%= link_to "Удалить профиль", user_path(current_user), class: "btn btn-outline-danger", method: :delete, data: { confirm: "Ты уверен?" } %> 
+  </div>
+
+
+<% end %>
+
+<% if logged_in? && @user == current_user %>
+
+
+<h3 class="text-center  mt-4">Познакомимся?</h3>
+<div class="row justify-content-md-center">
+<div class="col-4 mt-2">
+  <div class="card text-center shadow mb-5 bg-white rounded">
+    <div class="card-body">
+
+<%= link_to "Клац", "https://youtu.be/AC01YoK5Sg4", class: "btn btn-dark btn-lg"%>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <h3 class="text-center  mt-4">Если ты готов приступить, тогда в путь!</h3>
+  <div class="row justify-content-md-center">
+  <div class="col-4 mt-2">
+    <div class="card text-center shadow mb-5 bg-white rounded">
+      <div class="card-body">
+  
+  <%= link_to "Курс", pages_course_path, class: "btn btn-warning btn-lg"%>
+       </div>
+      </div>
+     </div>
+    </div>
+
+<% end %>
+

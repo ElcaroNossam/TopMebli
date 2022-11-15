@@ -1,0 +1,282 @@
+@import 'bootstrap/dist/css/bootstrap';
+
+
+$gray-medium-light: #eaeaea;
+@mixin box_sizing {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+  }
+
+
+.navbar {
+    background-color: black !important;
+  }
+  
+  .nav-link {
+    color: white !important;
+  }
+  
+  #logo {
+    float: left;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+  }
+  
+  #home-container {
+    margin-top: 25px;
+  }
+  
+  .jumbotron {
+    background-image: asset-url('index2.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 425px;
+  }
+
+  html,
+body {
+  height: 100%;
+}
+
+#page-content {
+  flex: 1 0 auto;
+  background-color: lightgrey;
+}
+
+#sticky-footer {
+  flex-shrink: none;
+  margin-top: 25px;
+
+}
+
+#groupe {
+  margin-top: 25px;
+}
+
+#lolik {
+  margin-top: 150px;
+}
+/* pagination styling */
+
+.flickr_pagination {
+  text-align: center;
+  padding: 0.3em;
+  cursor: default; }
+  .flickr_pagination a, .flickr_pagination span, .flickr_pagination em {
+    padding: 0.2em 0.5em;
+    border-radius: 5px;
+   }
+  .flickr_pagination .disabled {
+    color: #aaaaaa; }
+  .flickr_pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    color: #ff0084; }
+  .flickr_pagination a {
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    text-decoration: none; }
+    .flickr_pagination a:hover, .flickr_pagination a:focus {
+      border-color: gray;
+      background: whitesmoke;
+      color: gray; }
+  .flickr_pagination .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em; }
+  .flickr_pagination .previous_page, .flickr_pagination .next_page {
+    border-width: 2px; }
+  .flickr_pagination .previous_page {
+    margin-right: 1em; }
+  .flickr_pagination .next_page {
+    margin-left: 1em; }
+
+    #mopk {
+      margin-left: 300px;
+    }
+
+    /* microposts */
+
+.microposts {
+  list-style: none;
+  padding: 10px;
+  margin-right: 20px;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    margin-right: 500px;
+    margin-top: 10px;
+   
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 5em;
+    margin-left:  110px;
+    font-size: 1em;
+    letter-spacing: -2px;
+   
+  }
+  .content {
+    display: block;
+    margin-left: 50px;
+    margin-top: 25px;
+
+    img {
+      display: block;
+      padding: 50px 0;
+      margin-left:  100px;
+    }
+  }
+  .timestamp {
+    color:  #aaaaaa;
+    display: block;
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-right: 25px;
+  }
+  .gravatar {
+    float: left;
+    margin-left: 40px;
+    margin-top:0px;
+  }
+}
+
+aside {
+  textarea {
+    height: 100px;
+    margin-bottom: 5px;
+  }
+}
+
+span.picture {
+  margin-top: 10px;
+  input {
+    border: 0;
+  }
+}
+
+aside {
+  section.user_info {
+    margin-top: 50px;
+    margin-right: 80px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    margin-left: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0px;
+    }
+  }
+}
+/* miscellaneous */
+  
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-medium-light;
+}
+
+
+.gravatar {
+  margin-top: 30px;
+  float: left;
+  margin-right: 50px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  a {
+    margin-left: 0px;
+    float: center;
+    padding: 0px;
+    border-left: 5px solid #b60000;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
+  }
+  strong {
+    display: block;
+  }
+}
+
+.user_avatars {
+  overflow: auto;
+  margin-top: 10px;
+  .gravatar {
+    margin: 1px 1px;
+  }
+  a {
+    padding: 0;
+  }
+}
+
+.users.follow {
+  padding: 0;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}

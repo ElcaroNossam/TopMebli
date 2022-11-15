@@ -1,0 +1,54 @@
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+        </section>
+        <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+
+      
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+    <div class="col-md-8 mt-4" id="ot">
+    <h3>Отзывы</h3>
+    <%= render 'shared/feed' %>
+  </div>
+  </div>
+<% else %>
+
+<div class="row">
+  <aside class="col-md-4 mt-5">
+    <section class="user_info ">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.username %>
+      </h1>
+    </section>
+
+     
+
+
+  </aside>
+  <div class="col-md-8 ">
+  <%= render 'follow_form' if logged_in? %>
+    <% if @user.microposts.any? %>
+    <aside class="col-md-4 mt-4 ">
+      <h3>Отзывы (<%= @user.microposts.count %>)</h3>
+ 
+      </aside>
+      <%= render 'shared/stats' %>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <div class="flickr_pagination">
+      <%= will_paginate @microposts %>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
+<% end %>
