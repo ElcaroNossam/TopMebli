@@ -1546,3 +1546,91 @@ Processing by UsersController#index as HTML
 Completed 200 OK in 28ms (Views: 26.4ms | ActiveRecord: 0.8ms | Allocations: 10647)
 
 
+Started GET "/" for 127.0.0.1 at 2022-11-22 11:51:26 +0200
+  [1m[35m (8.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 10.1ms | Allocations: 618)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 9.7ms | Allocations: 687)
+  Rendered layouts/_messages.html.erb (Duration: 1.7ms | Allocations: 213)
+  Rendered layouts/_footer.html.erb (Duration: 2.2ms | Allocations: 214)
+  Rendered layout layouts/application.html.erb (Duration: 334.3ms | Allocations: 18380)
+Completed 200 OK in 409ms (Views: 356.8ms | ActiveRecord: 0.0ms | Allocations: 22045)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-11-22 11:51:31 +0200
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (Duration: 2.6ms | Allocations: 219)
+  Rendered users/_form.html.erb (Duration: 12313.9ms | Allocations: 1025434)
+  Rendered users/new.html.erb within layouts/application (Duration: 12318.1ms | Allocations: 1025735)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 1.9ms | Allocations: 320)
+  Rendered layouts/_messages.html.erb (Duration: 0.5ms | Allocations: 49)
+  Rendered layouts/_footer.html.erb (Duration: 0.5ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 12359.6ms | Allocations: 1031876)
+Completed 200 OK in 12494ms (Views: 12365.3ms | ActiveRecord: 2.8ms | Allocations: 1041027)
+
+
+Started POST "/users" for 127.0.0.1 at 2022-11-22 11:51:55 +0200
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"username"=>"Elcaro", "email"=>"teslenko.illia24@gmail.com", "password"=>"[FILTERED]", "code"=>"motobro24"}, "commit"=>"Регистрация"}
+[31mUnpermitted parameter: :code[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/users_controller.rb:45:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER(?) LIMIT ?[0m  [["username", "Elcaro"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:45:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."email") = LOWER(?) LIMIT ?[0m  [["email", "teslenko.illia24@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:45:in `create'
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "created_at", "updated_at", "password_digest") VALUES (?, ?, ?, ?, ?)[0m  [["username", "Elcaro"], ["email", "teslenko.illia24@gmail.com"], ["created_at", "2022-11-22 09:51:55.708531"], ["updated_at", "2022-11-22 09:51:55.708531"], ["password_digest", "$2a$12$HAiYc.5cuqA5/ViNgY4t0u9gsXkE3eReRaR.wyMEYinwyG6mu0ArG"]]
+  ↳ app/controllers/users_controller.rb:45:in `create'
+  [1m[36mTRANSACTION (12.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/users_controller.rb:45:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Redirected to http://127.0.0.1:3000/users/2
+Completed 302 Found in 721ms (ActiveRecord: 14.7ms | Allocations: 11233)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2022-11-22 11:51:55 +0200
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 2]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (Duration: 77.9ms | Allocations: 7888)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered users/show.html.erb within layouts/application (Duration: 89.5ms | Allocations: 9414)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 1.6ms | Allocations: 346)
+  Rendered layouts/_messages.html.erb (Duration: 0.3ms | Allocations: 54)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 124.8ms | Allocations: 15440)
+Completed 200 OK in 295ms (Views: 125.2ms | ActiveRecord: 2.9ms | Allocations: 26058)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-11-22 11:56:16 +0200
+Processing by UsersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_errors.html.erb (Duration: 0.3ms | Allocations: 41)
+  Rendered users/_form.html.erb (Duration: 16.4ms | Allocations: 1462)
+  Rendered users/new.html.erb within layouts/application (Duration: 17.3ms | Allocations: 1550)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 1.9ms | Allocations: 315)
+  Rendered layouts/_messages.html.erb (Duration: 0.4ms | Allocations: 49)
+  Rendered layouts/_footer.html.erb (Duration: 0.4ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 86.2ms | Allocations: 7634)
+Completed 200 OK in 90ms (Views: 88.1ms | ActiveRecord: 0.0ms | Allocations: 7998)
+
+
