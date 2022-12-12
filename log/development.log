@@ -1634,3 +1634,77 @@ Processing by UsersController#new as HTML
 Completed 200 OK in 90ms (Views: 88.1ms | ActiveRecord: 0.0ms | Allocations: 7998)
 
 
+Started GET "/users/2" for 127.0.0.1 at 2022-11-22 17:24:22 +0200
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:85:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."followed_id" WHERE "relationships"."follower_id" = ?[0m  [["follower_id", 2]]
+  ↳ app/views/shared/_stats.html.erb:5
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" INNER JOIN "relationships" ON "users"."id" = "relationships"."follower_id" WHERE "relationships"."followed_id" = ?[0m  [["followed_id", 2]]
+  ↳ app/views/shared/_stats.html.erb:11
+  Rendered shared/_stats.html.erb (Duration: 126.4ms | Allocations: 6546)
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered users/show.html.erb within layouts/application (Duration: 168.3ms | Allocations: 8207)
+Started GET "/" for 127.0.0.1 at 2022-11-22 17:24:23 +0200
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendered pages/home.html.erb within layouts/application (Duration: 74.3ms | Allocations: 1891)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 12.6ms | Allocations: 730)
+  Rendered layouts/_navbar.html.erb (Duration: 13.9ms | Allocations: 1078)
+  Rendered layouts/_messages.html.erb (Duration: 1.3ms | Allocations: 292)
+  Rendered layouts/_messages.html.erb (Duration: 1.2ms | Allocations: 273)
+  Rendered layouts/_footer.html.erb (Duration: 2.7ms | Allocations: 295)
+  Rendered layout layouts/application.html.erb (Duration: 972.7ms | Allocations: 24944)
+Completed 200 OK in 986ms (Views: 980.9ms | ActiveRecord: 1.6ms | Allocations: 25904)
+
+
+  Rendered layouts/_footer.html.erb (Duration: 2.4ms | Allocations: 321)
+  Rendered layout layouts/application.html.erb (Duration: 1651.4ms | Allocations: 40623)
+Completed 200 OK in 2211ms (Views: 1700.6ms | ActiveRecord: 11.0ms | Allocations: 57897)
+
+
+Started GET "/" for 127.0.0.1 at 2022-11-22 17:26:59 +0200
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.9ms | Allocations: 126)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 1.4ms | Allocations: 320)
+  Rendered layouts/_messages.html.erb (Duration: 1.2ms | Allocations: 49)
+  Rendered layouts/_footer.html.erb (Duration: 0.8ms | Allocations: 95)
+  Rendered layout layouts/application.html.erb (Duration: 43.0ms | Allocations: 6323)
+Completed 200 OK in 49ms (Views: 47.9ms | ActiveRecord: 0.0ms | Allocations: 6652)
+
+
+Started GET "/pages/magazin" for 127.0.0.1 at 2022-11-28 09:07:03 +0200
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/pages/magazin"):
+  
+Started GET "/" for 127.0.0.1 at 2022-11-28 09:07:20 +0200
+Processing by PagesController#home as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 19.4ms | Allocations: 390)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layouts/_navbar.html.erb (Duration: 13.4ms | Allocations: 686)
+  Rendered layouts/_messages.html.erb (Duration: 4.9ms | Allocations: 213)
+  Rendered layouts/_footer.html.erb (Duration: 2.4ms | Allocations: 214)
+  Rendered layout layouts/application.html.erb (Duration: 601.7ms | Allocations: 15017)
+Completed 200 OK in 669ms (Views: 618.6ms | ActiveRecord: 0.0ms | Allocations: 17071)
+
+
